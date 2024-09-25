@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 
 export const metadata = { title: "Registracia | NaPrdAplikacia" }
 
-export default function Register() {
+export default function SignUp() {
 
   return (
     <Container>

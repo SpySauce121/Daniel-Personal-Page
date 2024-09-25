@@ -1,15 +1,15 @@
-// src/app/profil/page.tsx
+// src/app/prispevok/[id]/page.tsx
 
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-export const metadata = { title: "Zoznam profilov | NaPrdAplikacia" }
+export const metadata = { title: "Detail Prispevku | NaPrdAplikacia" }
 
-export default function ProfileList() {
+export default function PostDetail() {
 
   return (
     <Container>
-        <Typography> Tu je zoznam profilov | Stalkujte si ich kolko chcete, aj tak tu nic nie je </Typography>
+        <Typography> Tu je nejaky prispevok | Stalkujte si tu kolko chcete, aj tak tu nic nie je </Typography>
     </Container>
   );
 }

@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 
 export const metadata = { title: "Odhlasenie | NaPrdAplikacia" }
 
-export default function Logout() {
+export default function SignOut() {
 
   return (
     <Container>
