@@ -2,7 +2,7 @@
 
 import Typography from "@mui/material/Typography";
 
-export const metadata = { title: "Domov | NaPrdAplikaciaKtoraMiJeNaNic" }
+export const metadata = { title: "Domov | NaPrdAplikacia" }
 
 export default function Home() {
 

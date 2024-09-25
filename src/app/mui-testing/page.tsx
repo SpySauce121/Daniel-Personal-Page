@@ -13,7 +13,7 @@ export default function RadioButtonsGroup() {
       <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="female"
+        defaultValue="kaufland taška"
         name="radio-buttons-group"
       >
         <FormControlLabel value="female" control={<Radio />} label="Female" />

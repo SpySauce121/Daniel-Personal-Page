@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
 
-export const metadata = { title: "404 | NaPrdAplikaciaKtoraMiJeNaNic" }
+export const metadata = { title: "404 | NaPrdAplikacia" }
 
 export default function NotFound() {
 
