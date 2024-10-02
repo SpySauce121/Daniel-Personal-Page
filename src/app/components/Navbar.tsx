@@ -39,7 +39,7 @@ export default function Navbar() {
         <BottomNavigationAction 
           label="Domov" 
           icon={<HomeIcon />} 
-          component={Link} 
+          component={Link}
           href="/" 
         />
         <BottomNavigationAction 

@@ -1,0 +1,1 @@
+// src/app/prispevok/[prispevokid]/komentare/page.tsx
