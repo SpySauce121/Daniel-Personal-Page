@@ -3,13 +3,13 @@
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-export const metadata = { title: "Zoznam profilov | NaPrdAplikacia" }
+export const metadata = { title: "Notifikacie | NaPrdAplikacia" }
 
-export default function ProfileList() {
+export default function Notifications() {
 
   return (
     <Container>
-        <Typography> Tu je zoznam profilov | Stalkujte si ich kolko chcete, aj tak tu nic nie je </Typography>
+        <Typography> Tu budu notifikacie nejake netusim ake asi </Typography>
     </Container>
   );
 }
