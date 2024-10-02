@@ -5,9 +5,11 @@ import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Person2Icon from '@mui/icons-material/Person2';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 import Link from 'next/link';
+import AssistantIcon from '@mui/icons-material/Assistant';
+import LoginIcon from '@mui/icons-material/Login';
 
 export default function Navbar() {
   const [value, setValue] = React.useState(0);
@@ -35,24 +37,37 @@ export default function Navbar() {
         onChange={handleChange}
       >
         <BottomNavigationAction 
-          label="Recents" 
+          label="Domov" 
           icon={<HomeIcon />} 
           component={Link} 
-          href="/(home)/page.tsx" 
+          href="/" 
         />
         <BottomNavigationAction 
-          label="Favorites" 
-          icon={<FavoriteIcon />} 
+          label="Profil" 
+          icon={<Person2Icon />} 
           component={Link} 
-          href="/favorites" 
+          href="/profil" 
         />
         <BottomNavigationAction 
-          label="Nearby" 
-          icon={<LocationOnIcon />} 
+          label="Posty" 
+          icon={<AssistantIcon />} 
           component={Link} 
-          href="/nearby" 
+          href="/prispevok" 
+        />
+        <BottomNavigationAction 
+          label="Prihlasenie" 
+          icon={<LoginIcon />} 
+          component={Link} 
+          href="/auth/prihlasenie" 
+        />
+        <BottomNavigationAction 
+          label="Registracia" 
+          icon={<HowToRegIcon />} 
+          component={Link} 
+          href="/auth/registracia" 
         />
       </BottomNavigation>
+        
     </Box>
   );
 }
