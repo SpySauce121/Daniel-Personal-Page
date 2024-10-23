@@ -1,15 +1,10 @@
 // src/app/auth/prihlasenie/page.tsx
 
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 
-export const metadata = { title: "Prihlasenie | NaPrdAplikacia" }
+import SignInView from "../../../sections/SignInView";
 
-export default function SignIn() {
+export const metadata = { title: "Prihlásenie užívateľa | ZoškaSnap" };
 
-  return (
-    <Container>
-        <Typography> Na co sa vracias? Uz to nerob </Typography>
-    </Container>
-  );
+export default function SignInPage() {
+  return <SignInView />;
 }

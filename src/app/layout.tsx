@@ -1,10 +1,13 @@
-import type { Metadata } from "next";
+// src/app/layout.tsx
+
+import { Metadata } from "next";
 import "./globals.css";
-import Navbar from './components/Navbar';
+import Navbar from "../components/Navbar";
+import AuthProvider from "../components/AuthProvider";
 
 export const metadata: Metadata = {
-  title: "NaPrdAplikacia",
-  description: "Created by Pakoň224",
+  title: "SnapZoška",
+  description: "Created by students of SPŠE Zochova 9, Bratislava",
 };
 
 export default function RootLayout({
@@ -15,8 +18,14 @@ export default function RootLayout({
   return (
     <html lang="sk">
       <body>
-        <main style={{ paddingBottom: '56px' }}>{children}</main> {/* Pridaj padding na hlavný obsah */}
-        <Navbar /> {/* Navbar bude na spodku */}
+        <AuthProvider>
+          <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+            <main style={{ flexGrow: 1 }}>
+              {children}
+            </main>
+          </div>
+          <Navbar /> 
+        </AuthProvider>
       </body>
     </html>
   );
