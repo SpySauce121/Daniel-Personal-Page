@@ -9,7 +9,7 @@ export default function ProfileList() {
 
   return (
     <Container>
-        <Typography> Tu je zoznam profilov | Stalkujte si ich kolko chcete, aj tak tu nic nie je </Typography>
+        <Typography> Tu je zoznam profilovov | Stalkujte si ich kolko chcete, aj tak tu nic nie je </Typography>
     </Container>
   );
 }
