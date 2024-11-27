@@ -1,4 +1,3 @@
-
 // /src/components/Navbar.tsx
 
 "use client";
@@ -12,7 +11,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useRouter } from 'next/navigation';
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Navbar() {
   const [value, setValue] = React.useState('/');
@@ -21,10 +20,14 @@ export default function Navbar() {
 
   const handleNavigation = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
-    router.push(newValue);
+    if (newValue === '/auth/odhlasenie') {
+      signOut({
+        callbackUrl: '/',
+      });
+    } else {
+      router.push(newValue);
+    }
   };
-
-  // Non-authenticated navigation paths
   const nonAuthPaths = [
     { label: "Domov", value: "/", icon: <HomeIcon /> },
     { label: "Prispevky", value: "/prispevok", icon: <AddCircleIcon /> },
@@ -32,11 +35,10 @@ export default function Navbar() {
     { label: "Prihlásenie", value: "/auth/prihlasenie", icon: <LoginIcon /> }
   ];
 
-  // Authenticated navigation paths
   const authPaths = [
     { label: "Domov", value: "/", icon: <HomeIcon /> },
-    { label: "Hľadať", value: "/search", icon: <SearchIcon /> },
-    { label: "Pridať", value: "/add", icon: <AddCircleIcon /> },
+    { label: "Hľadať", value: "/hladanie", icon: <SearchIcon /> },
+    { label: "Pridať", value: "/pridat", icon: <AddCircleIcon /> },
     {
       label: "Profil",
       value: "/profil",
@@ -52,7 +54,6 @@ export default function Navbar() {
     { label: "Odhlásiť", value: "/auth/odhlasenie", icon: <LogoutIcon /> },
   ];
 
-  // Decide which paths to use based on authentication status
   const navigationPaths = status === "authenticated" ? authPaths : nonAuthPaths;
 
   return (
