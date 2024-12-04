@@ -4,13 +4,17 @@
 
 import {
   Button,
+  //Checkbox,
   Container,
+  //FormControlLabel,
+  //TextField,
   Typography,
-  Box,
+  //Divider,
 } from "@mui/material";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import GithubIcon from "@mui/icons-material/Github";
+//import FacebookIcon from "@mui/icons-material/Facebook";
 
 export default function SignUpView() {
   return (
@@ -27,71 +31,92 @@ export default function SignUpView() {
         borderRadius: 2,
       }}
     >
-      {/* Title */}
+      {/* Logo / Title */}
       <Typography variant="h5" sx={{ mb: 3 }}>
         Registrácia
       </Typography>
 
-      {/* Sign-in Link */}
+      {/* Sign-in link */}
       <Typography variant="body1" sx={{ mb: 6 }}>
         Už máte účet? <a href="/auth/prihlasenie">Prihláste sa</a>
       </Typography>
 
-      {/* Google Sign Up Button */}
+      {/* Google Sign Up */}
       <Button
         variant="outlined"
         fullWidth
+        startIcon={<GoogleIcon />}
         onClick={() => signIn("google")}
-        sx={{
-          mb: 1,
-          border: `2px solid`,
-          borderImageSlice: 1,
-          borderImageSource: `linear-gradient(45deg, 
-            red, orange, yellow, green, blue, indigo, violet)`,
-          color: "text.primary",
-          fontWeight: "bold",
-          "&:hover": {
-            borderImageSource: `linear-gradient(45deg, 
-              violet, indigo, blue, green, yellow, orange, red)`,
-            backgroundColor: "transparent",
-          },
-        }}
+        sx={{ mb: 1 }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            mr: 1,
-            background: `linear-gradient(45deg, 
-              red, orange, yellow, green, blue, indigo, violet)`,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          <GoogleIcon />
-        </Box>
         Registrovať sa účtom Google
       </Button>
-
-      {/* GitHub Sign Up Button */}
       <Button
-        variant="contained"
+        variant="outlined"
         fullWidth
         startIcon={<GithubIcon />}
         onClick={() => signIn("github")}
-        sx={{
-          mb: 1,
-          backgroundColor: "#000",
-          color: "#fff",
-          fontWeight: "bold",
-          "&:hover": {
-            backgroundColor: "#333",
-          },
-        }}
+        sx={{ mb: 1 }}
       >
         Registrovať sa účtom Github
       </Button>
+
+
     </Container>
   );
 }
+
+
+      // {/* Facebook Sign Up */}
+      // <Button
+      //   variant="outlined"
+      //   fullWidth
+      //   startIcon={<FacebookIcon />}
+      //   sx={{ mb: 4 }}
+      // >
+      //   Registrovať sa účtom Facebook
+      // </Button>
+
+      // {/* Divider */}
+      // <Divider sx={{ width: "100%", mb: 2 }}>
+      //   <Typography variant="body2">alebo</Typography>
+      // </Divider>
+
+      // {/* Email */}
+      // <TextField
+      //   margin="normal"
+      //   fullWidth
+      //   label="Email"
+      //   type="email"
+      //   variant="outlined"
+      //   required
+      //   defaultValue="your@email.com"
+      // />
+
+      // {/* Password */}
+      // <TextField
+      //   margin="normal"
+      //   fullWidth
+      //   label="Password"
+      //   type="password"
+      //   variant="outlined"
+      //   required
+      //   defaultValue="******"
+      // />
+
+      // {/* Checkbox */}
+      // <FormControlLabel
+      //   control={<Checkbox color="primary" />}
+      //   label="Chcem dostávať novinky na email"
+      //   sx={{ mt: 2 }}
+      // />
+
+      // {/* Sign Up Button */}
+      // <Button
+      //   variant="contained"
+      //   fullWidth
+      //   size="large"
+      //   sx={{ mt: 2, mb: 1 }}
+      // >
+      //   Registrovať
+      // </Button>
