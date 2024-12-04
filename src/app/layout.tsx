@@ -1,10 +1,11 @@
 "use client"; // This marks the component as a client component
-import { Metadata } from 'next'; // Correct import path for Metadata
+
+import { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import AuthProvider from "../components/AuthProvider";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "../theme/theme"; // Correct import for theme
+import theme from "../theme/theme";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   title: "MaxPrd",
   description: "Created by student of SPŠE Zochova 9, Bratislava",
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
