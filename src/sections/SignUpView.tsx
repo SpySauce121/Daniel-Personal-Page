@@ -4,19 +4,23 @@
 
 import {
   Button,
-  //Checkbox,
   Container,
-  //FormControlLabel,
-  //TextField,
   Typography,
-  //Divider,
+  Checkbox,
+  FormControlLabel,
 } from "@mui/material";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import GithubIcon from "@mui/icons-material/Github";
-//import FacebookIcon from "@mui/icons-material/Facebook";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function SignUpView() {
+  const [gdprAccepted, setGdprAccepted] = useState(false);
+
+  const handleGdprChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setGdprAccepted(event.target.checked);
+  };
   return (
     <Container
       maxWidth="xs"
@@ -41,12 +45,37 @@ export default function SignUpView() {
         Už máte účet? <a href="/auth/prihlasenie">Prihláste sa</a>
       </Typography>
 
+      {/* GDPR Consent Checkbox */}
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={gdprAccepted}
+            onChange={handleGdprChange}
+            color="primary"
+          />
+        }
+        label={
+          <span>
+            Súhlasím s{" "}
+            <Link href="/gdpr" passHref>
+              GDPR
+            </Link>
+          </span>
+        }
+        sx={{
+          mt: 2,
+          justifyContent: "flex-start", // Ensure the label is aligned with the checkbox
+          alignItems: "center", // Align checkbox with the text
+        }}
+      />
+
       {/* Google Sign Up */}
       <Button
         variant="outlined"
         fullWidth
         startIcon={<GoogleIcon />}
         onClick={() => signIn("google")}
+        disabled={!gdprAccepted}
         sx={{ mb: 1 }}
       >
         Registrovať sa účtom Google
@@ -56,6 +85,7 @@ export default function SignUpView() {
         fullWidth
         startIcon={<GithubIcon />}
         onClick={() => signIn("github")}
+        disabled={!gdprAccepted}
         sx={{ mb: 1 }}
       >
         Registrovať sa účtom Github

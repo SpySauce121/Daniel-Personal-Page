@@ -20,13 +20,7 @@ export default function Navbar() {
 
   const handleNavigation = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
-    if (newValue === '/auth/odhlasenie') {
-      signOut({
-        callbackUrl: '/',
-      });
-    } else {
       router.push(newValue);
-    }
   };
   const nonAuthPaths = [
     { label: "Domov", value: "/", icon: <HomeIcon /> },
@@ -51,7 +45,7 @@ export default function Navbar() {
         <Avatar>{session?.user?.name?.charAt(0) || "U"}</Avatar>
       )
     },
-    { label: "Odhlásiť", value: "/auth/odhlasenie", icon: <LogoutIcon /> },
+    { label: "Odhlásiť", value: "/odhlasenie", icon: <LogoutIcon /> },
   ];
 
   const navigationPaths = status === "authenticated" ? authPaths : nonAuthPaths;
