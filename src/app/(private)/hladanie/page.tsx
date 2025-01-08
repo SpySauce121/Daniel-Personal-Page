@@ -3,7 +3,7 @@
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-export const metadata = { title: "Zoznam profilov | NaPrdAplikacia" }
+export const metadata = { title: "Zoznam profilovov | NaPrdAplikacia" }
 
 export default function ProfileList() {
 
