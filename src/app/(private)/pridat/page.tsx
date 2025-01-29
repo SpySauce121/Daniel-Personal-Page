@@ -9,7 +9,7 @@ export default function AddPost() {
 
   return (
     <Container>
-        <Typography> Tu si mozes pridat fotku z tvojho nudneho zivota, dufam ze si na seba hrdy</Typography>
+        <Typography> Tu si mozes pridat fotku z tvojho zivota, dufam ze si na seba hrdy</Typography>
     </Container>
   );
 }

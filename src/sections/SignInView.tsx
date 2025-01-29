@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
-import GithubIcon from "@mui/icons-material/Github";
+import GithubIcon from "@mui/icons-material/GitHub";
 
 export default function SignInView() {
   return (

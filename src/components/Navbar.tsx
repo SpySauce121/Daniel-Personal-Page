@@ -12,6 +12,7 @@ import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useRouter } from 'next/navigation';
 import { useSession, signOut } from "next-auth/react";
+import InfoIcon from '@mui/icons-material/Info';
 
 export default function Navbar() {
   const [value, setValue] = React.useState('/');
@@ -24,7 +25,7 @@ export default function Navbar() {
   };
   const nonAuthPaths = [
     { label: "Domov", value: "/", icon: <HomeIcon /> },
-    { label: "Prispevky", value: "/prispevok", icon: <AddCircleIcon /> },
+    { label: "O nás", value: "/o-nas", icon: <InfoIcon /> },
     { label: "Registrácia", value: "/auth/registracia", icon: <AppRegistrationIcon /> },
     { label: "Prihlásenie", value: "/auth/prihlasenie", icon: <LoginIcon /> }
   ];

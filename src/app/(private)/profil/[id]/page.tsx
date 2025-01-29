@@ -9,7 +9,7 @@ export default function ProfileDetail() {
 
   return (
     <Container>
-        <Typography> Tu je nejaky profil | Stalkujte si ho kolko chcete, aj tak tu nic nie je </Typography>
+        <Typography> Tu je nejaky profil | Stalkujte si ho kolko chcete </Typography>
     </Container>
   );
 }

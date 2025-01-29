@@ -9,7 +9,7 @@ export default function PostDetail({params}: { params: {prispevokid: string}}) {
 
   return (
     <Container>
-        <Typography> Tu je nejaky prispevok cislo {params.prispevokid} | Stalkujte si tu kolko chcete, aj tak tu nic nie je </Typography>
+        <Typography> Tu je nejaky prispevok cislo {params.prispevokid} | Stalkujte si tu kolko chcete </Typography>
     </Container>
   );
 }

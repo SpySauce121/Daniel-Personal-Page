@@ -15,7 +15,7 @@ export default function PostCommentDetail({
       <Typography>
         {" "}
         Tu je nejaky komentar cislo {params.komentareid} ku prispevku{" "}
-        {params.prispevokid} | Kukajte si na to tu kolko chcete, aj tak tu nic nie
+        {params.prispevokid} | Kukajte si na to kolko chcete
         je{" "}
       </Typography>
     </Container>

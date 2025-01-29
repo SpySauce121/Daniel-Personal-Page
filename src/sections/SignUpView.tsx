@@ -8,19 +8,35 @@ import {
   Typography,
   Checkbox,
   FormControlLabel,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
-import GithubIcon from "@mui/icons-material/Github";
+import GithubIcon from "@mui/icons-material/GitHub";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function SignUpView() {
   const [gdprAccepted, setGdprAccepted] = useState(false);
+  const [openError, setOpenError] = useState(false);
 
   const handleGdprChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGdprAccepted(event.target.checked);
   };
+
+  const handleSignUp = (provider: string) => {
+    if (!gdprAccepted) {
+      setOpenError(true); // Show error popup if GDPR not accepted
+    } else {
+      signIn(provider); // Proceed with sign-in if GDPR is accepted
+    }
+  };
+
+  const handleCloseError = () => {
+    setOpenError(false); // Close the error popup
+  };
+
   return (
     <Container
       maxWidth="xs"
@@ -45,6 +61,13 @@ export default function SignUpView() {
         Už máte účet? <a href="/auth/prihlasenie">Prihláste sa</a>
       </Typography>
 
+      {/* Error Message (above the checkbox) */}
+      {openError && (
+        <Alert severity="error" sx={{ mb: 2, width: "100%" }}>
+          Musíte súhlasiť s GDPR, aby ste sa mohli zaregistrovať.
+        </Alert>
+      )}
+
       {/* GDPR Consent Checkbox */}
       <FormControlLabel
         control={
@@ -60,6 +83,10 @@ export default function SignUpView() {
             <Link href="/gdpr" passHref>
               GDPR
             </Link>
+            {" "}a{" "}
+            <Link href="/podmienky" passHref>
+              Podmienky používania
+            </Link>
           </span>
         }
         sx={{
@@ -74,79 +101,22 @@ export default function SignUpView() {
         variant="outlined"
         fullWidth
         startIcon={<GoogleIcon />}
-        onClick={() => signIn("google")}
-        disabled={!gdprAccepted}
+        onClick={() => handleSignUp("google")}
         sx={{ mb: 1 }}
       >
         Registrovať sa účtom Google
       </Button>
+
+      {/* Github Sign Up */}
       <Button
         variant="outlined"
         fullWidth
         startIcon={<GithubIcon />}
-        onClick={() => signIn("github")}
-        disabled={!gdprAccepted}
+        onClick={() => handleSignUp("github")}
         sx={{ mb: 1 }}
       >
         Registrovať sa účtom Github
       </Button>
-
-
     </Container>
   );
 }
-
-
-      // {/* Facebook Sign Up */}
-      // <Button
-      //   variant="outlined"
-      //   fullWidth
-      //   startIcon={<FacebookIcon />}
-      //   sx={{ mb: 4 }}
-      // >
-      //   Registrovať sa účtom Facebook
-      // </Button>
-
-      // {/* Divider */}
-      // <Divider sx={{ width: "100%", mb: 2 }}>
-      //   <Typography variant="body2">alebo</Typography>
-      // </Divider>
-
-      // {/* Email */}
-      // <TextField
-      //   margin="normal"
-      //   fullWidth
-      //   label="Email"
-      //   type="email"
-      //   variant="outlined"
-      //   required
-      //   defaultValue="your@email.com"
-      // />
-
-      // {/* Password */}
-      // <TextField
-      //   margin="normal"
-      //   fullWidth
-      //   label="Password"
-      //   type="password"
-      //   variant="outlined"
-      //   required
-      //   defaultValue="******"
-      // />
-
-      // {/* Checkbox */}
-      // <FormControlLabel
-      //   control={<Checkbox color="primary" />}
-      //   label="Chcem dostávať novinky na email"
-      //   sx={{ mt: 2 }}
-      // />
-
-      // {/* Sign Up Button */}
-      // <Button
-      //   variant="contained"
-      //   fullWidth
-      //   size="large"
-      //   sx={{ mt: 2, mb: 1 }}
-      // >
-      //   Registrovať
-      // </Button>

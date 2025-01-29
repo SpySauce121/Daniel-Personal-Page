@@ -9,7 +9,7 @@ export default function About() {
 
   return (
     <Container>
-        <Typography> Stale sa mi to nechce robit </Typography>
+        <Typography> Okej </Typography>
     </Container>
   );
 }

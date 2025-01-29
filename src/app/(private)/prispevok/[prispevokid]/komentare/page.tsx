@@ -9,7 +9,7 @@ export default function CommentList() {
 
   return (
     <Container>
-        <Typography> Tu je zoznam komentarov | Stalkujte si ich kolko chcete, aj tak tu nic nie je </Typography>
+        <Typography> Tu je zoznam komentarov | Stalkujte si ich kolko chcete </Typography>
     </Container>
   );
 }
