@@ -10,8 +10,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="sk" className="scroll-smooth">
-      <body className="bg-background text-on-background">
+    <html lang="sk">
+      <body>
         <AuthProvider>
           <ThemeProvider>
             <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
@@ -26,4 +26,3 @@ export default function RootLayout({
     </html>
   );
 }
-
