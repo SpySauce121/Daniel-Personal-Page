@@ -1,4 +1,4 @@
-// RootLayout.tsx
+// Layout.tsx
 "use client";
 
 import "./globals.css";
@@ -10,8 +10,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="sk">
-      <body>
+    <html lang="sk" className="scroll-smooth">
+      <body className="bg-background text-on-background">
         <AuthProvider>
           <ThemeProvider>
             <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
@@ -26,3 +26,4 @@ export default function RootLayout({
     </html>
   );
 }
+

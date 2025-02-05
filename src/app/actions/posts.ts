@@ -9,9 +9,9 @@ export const getAllPosts = async () => {
       orderBy: { createdAt: "desc" },
       include: { user: true },
     });
-  } catch (err) {
-    console.error("Error retrieving posts:", err);
-    throw new Error("Unable to fetch posts");
+  } catch (error) {
+    console.error("Failed to load all posts:", error);
+    throw error;
   }
 };
 
@@ -22,25 +22,26 @@ export const getPostsByUser = async (userId: string) => {
       where: { userId },
       orderBy: { createdAt: "desc" },
     });
-  } catch (err) {
-    console.error(`Error retrieving posts for userId ${userId}:`, err);
-    throw new Error("Unable to fetch posts for the specified user");
+  } catch (error) {
+    console.error("Failed to load posts by user:", error);
+    throw error;
   }
 };
 
-// Function to create a new post with optional caption
-export const addNewPost = async (userId: string, imageUrl: string, caption?: string) => {
+// Function to create a new post with optional description
+export const addNewPost = async (userId: string, image: string, description?: string) => {
   try {
     const post = await prisma.post.create({
       data: {
         userId,
-        imageUrl,
-        caption,
+        image,
+        description,
       },
     });
     return post;
-  } catch (err) {
-    console.error("Error creating post:", err);
-    throw new Error("Unable to create post");
+  } catch (error) {
+    console.error("Failed to add new post:", error);
+    throw error;
   }
 };
+

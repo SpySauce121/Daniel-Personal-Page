@@ -1,31 +1,41 @@
-// ThemeProvider.tsx
-"use client";
-import React, { createContext, useContext, useState } from "react";
-import { ThemeProvider as MUIThemeProvider, CssBaseline } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
-import { lightTheme, darkTheme } from "../theme/theme"; // Import light and dark themes
+"use client"; // This needs to be a client component
 
-// Context for managing theme state
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { ThemeProvider as MUIThemeProvider, CssBaseline } from "@mui/material";
+import { darkTheme, lightTheme } from "@/theme/theme";
+
+
+// Create a context for the theme
 const ThemeContext = createContext({
   toggleTheme: () => {},
-  currentTheme: "light",
+  isDarkMode: false,
 });
 
-// Custom hook to access theme context
+// Export a custom hook for easy access to theme context
 export const useTheme = () => useContext(ThemeContext);
 
+// ThemeProvider component
 const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = useState("light"); // Default to light theme
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // Load theme preference from localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      setIsDarkMode(true);
+    }
+  }, []);
+
+  // Toggle the theme between dark and light
   const toggleTheme = () => {
-    setCurrentTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    localStorage.setItem("theme", newTheme ? "dark" : "light");
   };
 
-  const theme = currentTheme === "light" ? lightTheme : darkTheme;
-
   return (
-    <ThemeContext.Provider value={{ toggleTheme, currentTheme }}>
-      <MUIThemeProvider theme={createTheme(theme)}>
+    <ThemeContext.Provider value={{ toggleTheme, isDarkMode }}>
+      <MUIThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
         <CssBaseline />
         {children}
       </MUIThemeProvider>

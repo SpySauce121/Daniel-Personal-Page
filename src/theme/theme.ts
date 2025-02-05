@@ -1,146 +1,88 @@
-// theme/theme.ts
-import { PaletteOptions, Components } from "@mui/material/styles";
+import { createTheme } from '@mui/material/styles';
 
-export const lightTheme = {
-  palette: {
-    mode: 'light',
-    primary: {
-      main: "#1976d2",
-    },
-    secondary: {
-      main: "#dc004e",
-    },
-    background: {
-      default: "#f5f5f5",
-      paper: "#fff",
-    },
-    text: {
-      primary: "#000",
-    },
-  } as PaletteOptions,
-  typography: {
-    h5: {
-      fontWeight: "bold",
-      fontSize: "1.25rem",
-      color: "#333",
-    },
-    body1: {
-      color: "#555",
-    },
+// Define the light theme palette
+const lightPalette = {
+  primary: {
+    main: '#f50057', // pink
   },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          fontWeight: "bold",
-          textTransform: "none",
-        },
-        outlined: {
-          borderWidth: "2px",
-          borderImageSlice: 1,
-          borderImageSource: "linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)",
-          "&:hover": {
-            borderImageSource: "linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red)",
-            backgroundColor: "transparent",
-          },
-        },
-        contained: {
-          backgroundColor: "#000",
-          color: "#fff",
-          "&:hover": {
-            backgroundColor: "#333",
-          },
-        },
-      },
-    },
-    MuiTypography: {
-      styleOverrides: {
-        h5: {
-          marginBottom: "1rem",
-        },
-        body1: {
-          marginBottom: "1.5rem",
-        },
-      },
-    },
-    MuiAvatar: {
-      styleOverrides: {
-        root: {
-          backgroundColor: "#1976d2",
-        },
-      },
-    },
-  } as Components,
+  secondary: {
+    main: '#dc004e', // pink
+  },
+  background: {
+    default: '#fafafa', // light background
+    paper: '#ffffff', // paper background
+  },
+  text: {
+    primary: '#000000', // black text
+    secondary: '#555555', // gray text
+  },
 };
 
-export const darkTheme = {
+// Define the dark theme palette (slightly lighter dark colors)
+const darkPalette = {
+  primary: {
+    main: '#ff4081', // light pink
+  },
+  secondary: {
+    main: '#f50057', // pink
+  },
+  background: {
+    default: '#1a1a1a', // slightly lighter than #121212
+    paper: '#2c2c2c', // lighter paper background
+  },
+  text: {
+    primary: '#e0e0e0', // light white text (instead of pure white)
+    secondary: '#a0a0a0', // lighter gray text
+  },
+};
+
+// Create the theme
+export const lightTheme = createTheme({
   palette: {
-    mode: 'dark',
-    primary: {
-      main: "#1976d2",
-    },
-    secondary: {
-      main: "#dc004e",
-    },
-    background: {
-      default: "#121212", // Dark background
-      paper: "#1d1d1d",   // Dark paper background
-    },
-    text: {
-      primary: "#fff", // Light text on dark background
-    },
-  } as PaletteOptions,
+    mode: 'light', // Set the mode to 'light'
+    ...lightPalette, // Add light palette colors
+  },
   typography: {
-    h5: {
-      fontWeight: "bold",
-      fontSize: "1.25rem",
-      color: "#fff",
-    },
-    body1: {
-      color: "#ccc",
-    },
+    fontFamily: '"Roboto", "Arial", sans-serif', // Set global font family
   },
   components: {
-    MuiButton: {
+    MuiLink: {
       styleOverrides: {
         root: {
-          fontWeight: "bold",
-          textTransform: "none",
-        },
-        outlined: {
-          borderWidth: "2px",
-          borderImageSlice: 1,
-          borderImageSource: "linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)",
-          "&:hover": {
-            borderImageSource: "linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red)",
-            backgroundColor: "transparent",
-          },
-        },
-        contained: {
-          backgroundColor: "#000",
-          color: "#fff",
-          "&:hover": {
-            backgroundColor: "#333",
+          color: '#f50057', // pink color for links
+          textDecoration: 'none', // No underline by default
+          fontStyle: 'italic', // Cursive style for links
+          '&:hover': {
+            textDecoration: 'underline', // Underline on hover
+            color: '#f50057', // Darker shade of blue on hover
           },
         },
       },
     },
-    MuiTypography: {
-      styleOverrides: {
-        h5: {
-          marginBottom: "1rem",
-        },
-        body1: {
-          marginBottom: "1.5rem",
-        },
-      },
-    },
-    MuiAvatar: {
+  },
+});
+
+export const darkTheme = createTheme({
+  palette: {
+    mode: 'dark', // Set the mode to 'dark'
+    ...darkPalette, // Add dark palette colors
+  },
+  typography: {
+    fontFamily: '"Roboto", "Arial", sans-serif', // Set global font family
+  },
+  components: {
+    MuiLink: {
       styleOverrides: {
         root: {
-          backgroundColor: "#1976d2",
+          color: '#ff4081', // Light pink color for links in dark mode
+          textDecoration: 'none', // No underline by default
+          fontStyle: 'italic', // Cursive style for links
+          '&:hover': {
+            textDecoration: 'underline', // Underline on hover
+            color: '#f50057', // Lighter blue shade on hover in dark mode
+          },
         },
       },
     },
-  } as Components,
-};
+  },
+});
